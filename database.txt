@@ -1,0 +1,41 @@
+//# DDL
+create database store;
+
+create table countries (
+     name varchar(25) unique,
+     continent_name varchar(20) not null
+     Foreign key (user_gender) references (users)
+)
+create table users (
+    id primary key
+    username varchar(30),
+    email varchar(20) unique,
+    gender char(1) check (gender= 'f' or gender= 'm') primary key,
+    password varchar(10) not null 
+    )
+create table orders (
+    name varchar(25) not null,
+    status varchar(7) check (status= 'start' or status='finish')
+    Foreign key (order_id) references (order_items)
+
+)
+create table order_items (
+    name varchar(25) not null,
+    order id primary key,
+    quantity int default 0,
+)
+create table products (
+    name varchar(25) not null,
+    price int default 0,
+    status varchar(7) check (status= 'valid' or status='expired')
+)
+
+//# DML
+
+insert into countries values ('ksa', 'riyadh');
+insert into users values (1, 'sarahalnu', 's1@gmail.com', 'f', '123456');
+insert into order values ('now', 'start', 3);
+insert into order_items values ('may','5','1');
+insert into products values ('laal','330','valid');
+update countries set name='dammam' where name='riyadh';
+delete from products where status='valid';
